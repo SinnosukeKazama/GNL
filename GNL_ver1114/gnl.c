@@ -11,6 +11,7 @@
 #define FGS_EOF 0
 #define EOL '\n'
 
+//file of get_next_line_utils.c--------------------------
 size_t	ft_strlen(const char *s)
 {
 	size_t	i;
@@ -20,24 +21,6 @@ size_t	ft_strlen(const char *s)
 		return (0);
 	while (s[i] != '\0')
 		++i;
-	return (i);
-}
-//return value contain c.
-size_t	index_toc(const char *s, const char c, const size_t index_start)
-{
-	size_t	i;
-
-	if (index_start > ft_strlen(s) - 1)//error
-		return (0);
-	i = index_start;
-	if (!s)
-		return (0);
-	while (s[i] != '\0')
-	{
-		if (s[i] == c)
-			break;
-		++i;
-	}
 	return (i);
 }
 
@@ -158,13 +141,14 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	return (NULL);
 }
+//file of get_next_line.c (unique func)---------------------------
 /*
 ファイル読み取り関数
 fgetstr
 RETURN:
 error..-2
 succssed..sz_read
-EOF..-1
+EOF..0
 */
 ssize_t	fgetstr(const int fd, char *buf)
 {
@@ -193,7 +177,6 @@ char	*gnl(int fd)
 
 	if (!buf_sum)
 		buf_sum = ft_strdup("");
-
 	buf_one = malloc(BUFFER_SIZE + 1);//one allocate.
 	if (!buf_one)
 		return (NULL);
