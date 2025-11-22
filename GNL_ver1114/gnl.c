@@ -45,21 +45,6 @@ size_t	strlen_toc(const char *s, const char c, const size_t index_start)
 	return (len);
 }
 
-bool	isc_ins(const char *s, const char c, const size_t index_start)
-{
-	size_t	i;
-
-	if (index_start > ft_strlen(s) - 1)//error
-		return (0);
-	i = index_start;
-	while (s[i] != '\0')
-	{
-		if (s[i] == c)
-			return (true);
-		++i;
-	}
-	return (false);
-}
 
 size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
@@ -163,6 +148,22 @@ ssize_t	fgetstr(const int fd, char *buf)
 		return (FGS_EOF);
 	buf[sz_read] = '\0';
 	return (sz_read);
+}
+
+bool	isc_ins(const char *s, const char c, const size_t index_start)
+{
+	size_t	i;
+
+	if (index_start > ft_strlen(s) - 1)//error
+		return (0);
+	i = index_start;
+	while (s[i] != '\0')
+	{
+		if (s[i] == c)
+			return (true);
+		++i;
+	}
+	return (false);
 }
 
 char	*gnl(int fd)
